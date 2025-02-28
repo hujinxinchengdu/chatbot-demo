@@ -7,7 +7,7 @@ export default function ChatbotWidget() {
   const [elapsedTime, setElapsedTime] = useState(0);
   const timerRef = useRef(null);
 
-  // Reset timer when opening and closing
+  // 打开关闭时，重置计时器
   const handleOpen = () => {
     setIsOpen(true);
     setElapsedTime(0);
@@ -29,32 +29,32 @@ export default function ChatbotWidget() {
     setElapsedTime(0);
   };
 
-  // Clear timer when component unmounts
+  // 组件卸载时清除定时器
   useEffect(() => {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, []);
 
-  // Send message
+  // 发送消息
   const handleSend = () => {
     if (!userInput.trim()) return;
     const newMsg = { sender: "user", text: userInput };
     setMessages((prev) => [...prev, newMsg]);
     setUserInput("");
 
-    // Simulate bot reply
+    // 模拟机器人回复
     setTimeout(() => {
       const botResponse = {
         sender: "bot",
-        text: "It is an auto reply, thanks for sharing your information",
+        text: "这是一个自动回复，谢谢分享你的信息！",
       };
       setMessages((prev) => [...prev, botResponse]);
     }, 500);
   };
 
   if (!isOpen) {
-    // Floating button at the bottom right
+    // 右下角的悬浮按钮
     return (
       <button
         onClick={handleOpen}
@@ -65,17 +65,17 @@ export default function ChatbotWidget() {
     );
   }
 
-  // Chat window
+  // 聊天窗口
   return (
     <div
       className="fixed bottom-4 right-4 bg-white border shadow-md flex flex-col"
       style={{
         width: "400px",
         height: "600px",
-        // On mobile, media queries can be used to make it full screen
+        // 在移动端可用媒体查询使其占满全屏
       }}
     >
-      {/* Header: Timer + Reset & Close */}
+      {/* Header: 计时器 + Reset & Close */}
       <div className="flex justify-between items-center bg-blue-500 text-white p-3">
         <span>{elapsedTime}s</span>
         <div>
@@ -86,7 +86,7 @@ export default function ChatbotWidget() {
         </div>
       </div>
 
-      {/* Message display area */}
+      {/* 消息显示区 */}
       <div className="flex-1 overflow-y-auto p-3">
         {messages.map((msg, index) => (
           <div
@@ -108,7 +108,7 @@ export default function ChatbotWidget() {
         ))}
       </div>
 
-      {/* Input area */}
+      {/* 输入区 */}
       <div className="p-3 border-t flex">
         <input
           type="text"
