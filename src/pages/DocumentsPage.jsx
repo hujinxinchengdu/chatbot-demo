@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function DocumentsPage({ searchText }) {
-  // 多段文档示例内容
+  // Sample multi-paragraph document content
   const paragraphs = [
     "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -11,12 +11,12 @@ export default function DocumentsPage({ searchText }) {
     "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
   ];
 
-  // 筛选：只展示包含搜索关键字的段落
+  // Filter: Only display paragraphs that contain the search keyword
   const filteredParagraphs = paragraphs.filter((p) =>
     p.toLowerCase().includes(searchText.toLowerCase())
   );
 
-  // 高亮函数，用 <mark> 包裹匹配文字
+  // Highlight function, wraps matching text with <mark>
   const highlightText = (text, query) => {
     if (!query) return text;
     const regex = new RegExp(`(${query})`, "gi");

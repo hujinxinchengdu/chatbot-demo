@@ -13,20 +13,20 @@ function App() {
 
   return (
     /**
-     * w-screen h-screen: 让整个应用填满浏览器视窗（无空隙）
-     * flex flex-col: 纵向排列（Navbar 在上，中间区域填充剩余空间）
-     * overflow-hidden: 避免外部出现滚动条
+     * w-screen h-screen: makes the entire application fill the browser viewport (no gaps)
+     * flex flex-col: arrange vertically (Navbar on top, middle area fills remaining space)
+     * overflow-hidden: prevents external scrollbars
      */
     <div className="w-screen h-screen flex flex-col overflow-hidden">
-      {/* 1. 顶部导航，默认占据整行 */}
+      {/* 1. Top navigation bar, occupies entire row by default */}
       <Navbar onSearch={(value) => setSearchText(value)} />
 
-      {/* 2. 主体区域（侧边栏 + 内容区） */}
+      {/* 2. Main area (sidebar + content area) */}
       <div className="flex flex-1 overflow-hidden">
-        {/* 侧边栏：直接使用 SideMenu 内部的动态宽度 */}
+        {/* Sidebar: uses dynamic width inside SideMenu */}
         <SideMenu currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-        {/* 主要内容区 */}
+        {/* Main content area */}
         <div className="flex flex-1 overflow-auto">
           {currentPage === "apps" ? (
             <AppsPage searchText={searchText} />
@@ -36,7 +36,7 @@ function App() {
         </div>
       </div>
 
-      {/* 3. 悬浮聊天机器人（可选） */}
+      {/* 3. Floating chatbot (optional) */}
       <ChatbotWidget />
     </div>
   );

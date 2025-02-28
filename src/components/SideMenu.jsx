@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 export default function SideMenu({ currentPage, setCurrentPage }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  // 根据状态设置侧边栏宽度：展开时为15rem（w-60），收起时为4rem（w-16）
+  // Set sidebar width according to state: expanded is 15rem (w-60), collapsed is 4rem (w-16)
   const sideMenuWidth = isCollapsed ? "4rem" : "15rem";
 
-  // 箭头按钮样式：left 定位使用侧边栏宽度，然后平移自身一半，实现一半被侧边栏覆盖
+  // Arrow button style: left positioning uses sidebar width, then shift by a portion so that half is covered by the sidebar
   const arrowButtonStyle = {
     left: sideMenuWidth,
     top: "40%",
@@ -51,7 +51,7 @@ export default function SideMenu({ currentPage, setCurrentPage }) {
             className={`flex items-center px-4 py-3 transition-colors cursor-pointer focus:outline-none ${activeClasses}`}
           >
             {item.icon}
-            {/* 展开时显示文字，收起时仅显示图标 */}
+            {/* Show text when expanded, display only icon when collapsed */}
             {!isCollapsed && (
               <span className="ml-2 text-sm font-medium">{item.label}</span>
             )}
@@ -59,7 +59,7 @@ export default function SideMenu({ currentPage, setCurrentPage }) {
         );
       })}
 
-      {/* 箭头按钮：绝对定位于侧边栏右侧边缘，其一半被侧边栏遮盖 */}
+      {/* Arrow button: absolutely positioned on the right edge of the sidebar, half covered by the sidebar */}
       <div
         role="button"
         tabIndex={0}
@@ -68,7 +68,7 @@ export default function SideMenu({ currentPage, setCurrentPage }) {
         className="absolute z-10 w-8 h-8 bg-blue-600 text-white rounded-md cursor-pointer flex items-center justify-center shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
       >
         {isCollapsed ? (
-          // 收起状态下显示向右箭头（提示点击展开）
+          // When collapsed, display right arrow (indicating click to expand)
           <svg
             className="w-4 h-4"
             fill="none"
@@ -81,7 +81,7 @@ export default function SideMenu({ currentPage, setCurrentPage }) {
             <path d="M9 5l7 7-7 7" />
           </svg>
         ) : (
-          // 展开状态下显示向左箭头（提示点击收起）
+          // When expanded, display left arrow (indicating click to collapse)
           <svg
             className="w-4 h-4"
             fill="none"
