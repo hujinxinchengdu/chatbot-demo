@@ -2,13 +2,20 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import ChatbotWidget from "./ChatbotWidget";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
+      <div className="min-h-screen flex flex-col">
+        {/* 顶部导航条 */}
+        <Navbar onSearch={(value) => setSearchText(value)} />
+
+        <h1>123</h1>
+        {/* Chatbot Dialog Button */}
+        <ChatbotWidget />
+      </div>
     </>
   );
 }
