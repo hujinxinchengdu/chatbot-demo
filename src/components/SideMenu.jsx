@@ -34,33 +34,30 @@ export default function SideMenu({ currentPage, setCurrentPage }) {
   ];
 
   return (
-    <div className="relative h-screen">
-      {/* 侧边栏容器：绝对定位于页面左上角，z-20 确保在按钮之上 */}
-      <div
-        className="absolute top-0 left-0 h-full transition-all duration-300 z-20 bg-gray-50"
-        style={{ width: sideMenuWidth }}
-      >
-        {menuItems.map((item) => {
-          const isActive = currentPage === item.key;
-          const activeClasses = isActive
-            ? "!bg-blue-700 text-white"
-            : "bg-white text-gray-700 hover:bg-gray-100";
-          return (
-            <div
-              key={item.key}
-              role="button"
-              onClick={() => setCurrentPage(item.key)}
-              className={`flex items-center px-4 py-3 transition-colors cursor-pointer focus:outline-none ${activeClasses}`}
-            >
-              {item.icon}
-              {/* 展开时显示文字，收起时仅显示图标 */}
-              {!isCollapsed && (
-                <span className="ml-2 text-sm font-medium">{item.label}</span>
-              )}
-            </div>
-          );
-        })}
-      </div>
+    <div
+      className="relative h-screen transition-all duration-300 z-20 bg-gray-50"
+      style={{ width: sideMenuWidth }}
+    >
+      {menuItems.map((item) => {
+        const isActive = currentPage === item.key;
+        const activeClasses = isActive
+          ? "!bg-blue-700 text-white"
+          : "bg-white text-gray-700 hover:bg-gray-100";
+        return (
+          <div
+            key={item.key}
+            role="button"
+            onClick={() => setCurrentPage(item.key)}
+            className={`flex items-center px-4 py-3 transition-colors cursor-pointer focus:outline-none ${activeClasses}`}
+          >
+            {item.icon}
+            {/* 展开时显示文字，收起时仅显示图标 */}
+            {!isCollapsed && (
+              <span className="ml-2 text-sm font-medium">{item.label}</span>
+            )}
+          </div>
+        );
+      })}
 
       {/* 箭头按钮：绝对定位于侧边栏右侧边缘，其一半被侧边栏遮盖 */}
       <div
