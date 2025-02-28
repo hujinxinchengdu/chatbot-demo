@@ -3,11 +3,11 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-import Navbar from "./Navbar";
-import SideMenu from "./SideMenu";
-import AppsPage from "./AppsPage";
-import DocumentsPage from "./DocumentsPage";
-import ChatbotWidget from "./ChatbotWidget";
+import Navbar from "./components/Navbar";
+import SideMenu from "./components/SideMenu";
+import AppsPage from "./pages/AppsPage";
+import DocumentsPage from "./pages/DocumentsPage";
+import ChatbotWidget from "./components/ChatbotWidget";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("apps");
