@@ -9,7 +9,7 @@ export default function ChatbotWidget() {
   const [elapsedTime, setElapsedTime] = useState(0);
   const timerRef = useRef(null);
 
-  // 打开时重置计时器
+  // Reset timer when opening
   const handleOpen = () => {
     setIsOpen(true);
     setElapsedTime(0);
@@ -31,21 +31,21 @@ export default function ChatbotWidget() {
     setElapsedTime(0);
   };
 
-  // 组件卸载时清除定时器
+  // Clear timer when component unmounts
   useEffect(() => {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, []);
 
-  // 发送消息
+  // Send message
   const handleSend = () => {
     if (!userInput.trim()) return;
     const newMsg = { sender: "user", text: userInput };
     setMessages((prev) => [...prev, newMsg]);
     setUserInput("");
 
-    // 简单模拟机器人回复
+    // Simple simulated bot reply
     setTimeout(() => {
       const botResponse = {
         sender: "bot",
@@ -57,20 +57,17 @@ export default function ChatbotWidget() {
 
   return (
     <>
-      {/* 始终显示的悬浮按钮 */}
+      {/* Floating button always visible */}
       <ChatButton onClick={isOpen ? handleClose : handleOpen} />
 
-      {/* 聊天窗口，定位在按钮上方 */}
+      {/* Chat window, positioned above the button */}
       {isOpen && (
         <div
-          className="fixed right-4 bg-white border shadow-md flex flex-col"
-          style={{
-            width: "400px",
-            height: "600px",
-            bottom: "120px", // 保证窗口显示在按钮上方
-          }}
+          className="fixed z-50 bg-white border shadow-md flex flex-col
+            w-full h-full bottom-0 right-0 
+            sm:w-[400px] sm:h-[600px] sm:bottom-[120px] sm:right-4"
         >
-          {/* Header: 计时器 + Reset & Close */}
+          {/* Header: Timer + Reset & Close */}
           <div className="flex justify-between items-center bg-blue-700 text-white px-4 py-2">
             <span>{elapsedTime}</span>
             <div className="flex space-x-2">
@@ -99,7 +96,7 @@ export default function ChatbotWidget() {
             </div>
           </div>
 
-          {/* 消息显示区 */}
+          {/* Message display area */}
           <div className="flex-1 overflow-y-auto p-4 bg-white">
             {messages.map((msg, index) => {
               const isUser = msg.sender === "user";
@@ -129,7 +126,7 @@ export default function ChatbotWidget() {
             })}
           </div>
 
-          {/* 输入区 */}
+          {/* Input area */}
           <div className="p-3 border-t flex">
             <input
               type="text"

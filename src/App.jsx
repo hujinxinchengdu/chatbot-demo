@@ -24,10 +24,12 @@ function App() {
       {/* 2. 主体区域（侧边栏 + 内容区） */}
       <div className="flex flex-1 overflow-hidden">
         {/* 侧边栏，占固定宽度 */}
-        <SideMenu currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <div className="w-64">
+          <SideMenu currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        </div>
 
         {/* 主要内容区，撑满剩余空间，并允许滚动 */}
-        <div className="flex-1 overflow-auto">
+        <div className="flex flex-1 overflow-auto">
           {currentPage === "apps" ? (
             <AppsPage searchText={searchText} />
           ) : (
