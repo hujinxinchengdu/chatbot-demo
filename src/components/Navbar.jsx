@@ -29,7 +29,9 @@ export default function Navbar({ onSearch }) {
         </svg>
 
         {/* 2. “ChatBot” 文本，颜色与上方圆形一致 */}
-        <span className="text-xl font-semibold text-blue-600">ChatBot</span>
+        <span className="text-xl font-semibold text-blue-600 font-serif">
+          ChatBot
+        </span>
       </div>
 
       {/* 右侧搜索框区域 */}
